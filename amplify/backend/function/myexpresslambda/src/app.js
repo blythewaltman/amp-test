@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
  **********************/
 
 app.get("/items", function (req, res) {
-  const items = ["hello", "world"];
+  const items = [process.env.TEST_ENV];
   res.json({ success: "get call succeed!", items });
 });
 
