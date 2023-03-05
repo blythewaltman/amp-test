@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License"). You may not use 
 or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
 */
-import "dotenv/config";
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
@@ -25,9 +25,9 @@ app.use(function (req, res, next) {
 /**********************
  * Example get method *
  **********************/
-
+let dotenv = require("dotenv").config();
 app.get("/items", function (req, res) {
-  const items = [process.env.TEST_ENV];
+  const items = dotenv;
   res.json({ success: "get call succeed!", items });
 });
 
