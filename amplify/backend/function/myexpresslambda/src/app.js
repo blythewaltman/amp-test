@@ -25,10 +25,10 @@ app.use(function (req, res, next) {
 /**********************
  * Example get method *
  **********************/
-let dotenv = require("dotenv").config();
+require("dotenv").config();
 app.get("/items", function (req, res) {
-  const items = dotenv;
-  res.json({ success: "get call succeed!", items });
+  const test = process.env.TEST_ENV;
+  res.json({ success: "get call succeed!", test });
 });
 
 app.get("/items/*", function (req, res) {
