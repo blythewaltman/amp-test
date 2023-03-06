@@ -57,9 +57,9 @@ const getSecret = async () => {
 };
 
 app.get("/items", function (req, res) {
-  const secret = getSecret();
-  console.log("Just finished calling getSecret()");
-  res.json({ success: "get call succeed!", secret });
+  getSecret().then(function (secret) {
+    res.json({ success: "get call succeed!", secret });
+  });
 });
 
 app.get("/items/*", function (req, res) {
