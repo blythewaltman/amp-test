@@ -32,11 +32,13 @@ const {
 } = require("@aws-sdk/client-secrets-manager");
 
 const getSecret = async () => {
+  console.log("Get secret has been called");
   const secret_name = "amplify-test-env-key";
   const client = new SecretsManagerClient({
     region: "us-east-1",
   });
   let response;
+  console.log(`The secret name is ${secret_name}`);
   try {
     response = await client.send(
       new GetSecretValueCommand({
@@ -50,11 +52,13 @@ const getSecret = async () => {
     throw error;
   }
   const secret = response.SecretString;
+  console.log(`Secret is ${secret}`);
   return secret;
 };
 
 app.get("/items", function (req, res) {
   const secret = getSecret();
+  console.log("Just finished calling getSecret()");
   res.json({ success: "get call succeed!", secret });
 });
 
