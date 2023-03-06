@@ -26,38 +26,11 @@ app.use(function (req, res, next) {
  * Example get method *
  **********************/
 require("dotenv").config();
-const {
-  SecretsManagerClient,
-  GetSecretValueCommand,
-} = require("@aws-sdk/client-secrets-manager");
-
-const getSecret = async () => {
-  console.log("Get secret has been called");
-  const secret_name = "amplify-test-env-key";
-  const client = new SecretsManagerClient({
-    region: "us-east-1",
-  });
-  let response;
-  console.log(`The secret name is ${secret_name}`);
-  try {
-    response = await client.send(
-      new GetSecretValueCommand({
-        SecretId: secret_name,
-        VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
-      })
-    );
-  } catch (error) {
-    // For a list of exceptions thrown, see
-    // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-    throw error;
-  }
-  const secret = response.SecretString;
-  console.log(`Secret is ${secret}`);
-  return secret;
-};
+const getSecret = require("./getSecret.js");
 
 app.get("/items", function (req, res) {
-  getSecret().then(function (secret) {
+  getSecret("ai-image-news-api-key").then(function (secret) {
+    console.log("Just finished calling getSecret()");
     res.json({ success: "get call succeed!", secret });
   });
 });
