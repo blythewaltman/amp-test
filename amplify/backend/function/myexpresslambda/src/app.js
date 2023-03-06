@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
  **********************/
 require("dotenv").config();
 app.get("/items", function (req, res) {
-  const test = process.env.TEST_ENV;
+  const test = process.env.REACT_APP_TEST_ENV;
   res.json({ success: "get call succeed!", test });
 });
 
