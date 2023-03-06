@@ -15,7 +15,7 @@
       "function": {
         "myexpresslambda": {
           "deploymentBucketName": "amplify-amptest-dev-145335-deployment",
-          "s3Key": "amplify-builds/myexpresslambda-63334a417859616b4b33-build.zip"
+          "s3Key": "amplify-builds/myexpresslambda-545553665a344f467447-build.zip"
         }
       },
       "api": {

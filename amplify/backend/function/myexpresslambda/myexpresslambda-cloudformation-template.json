@@ -2,6 +2,10 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.8.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
+    "MyKey": {
+      "Type": "String",
+      "Default": "my-environment-variable"
+    },
     "CloudWatchRule": {
       "Type": "String",
       "Default": "NONE",
@@ -69,6 +73,9 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "MY_ENV_VAR": {
+              "Ref": "MyKey"
             }
           }
         },
